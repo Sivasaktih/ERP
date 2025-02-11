@@ -1,7 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./landingpage.css"; // Import the CSS file for styling
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+import "./landingpage.css"; // Import CSS file for styling
 import Logo from "../assets/Service-logo.jpg";
+
 const Landingpage = () => {
   const navigate = useNavigate();
 
@@ -14,11 +18,6 @@ const Landingpage = () => {
       <nav id="menu" className="navbar">
         <div className="container">
           <div className="navbar-header">
-            {/* <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> */}
-            {/* <span className="icon-bar"></span> */}
-            {/* <span className="icon-bar"></span> */}
-            {/* <span className="icon-bar"></span> */}
-            {/* </button> */}
             <a className="navbar-brand" href="#home">
               React Landing Page
             </a>
@@ -26,27 +25,11 @@ const Landingpage = () => {
 
           <div className="collapse navbar-collapse" id="navbar-menu">
             <ul className="nav-links">
-              <li>
-                <a href="#features">Home</a>
-              </li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#services">Services</a>
-              </li>
-              <li>
-                <a href="#portfolio">Gallery</a>
-              </li>
-              <li>
-                <a href="#testimonials">Testimonials</a>
-              </li>
-              <li>
-                <a href="#team">Team</a>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
+              <li><a href="#features">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#team">Team</a></li>
+              <li><a href="#contact">Contact</a></li>
               <li>
                 <button className="signup-btn" onClick={handleSignup}>
                   Signup
@@ -65,107 +48,110 @@ const Landingpage = () => {
         </button>
       </header>
 
-    <section id="about" className="about-container">
-      <div className="about-content">
-        {/* Left: Image */}
-        <div className="about-image">
-          <img src={Logo} alt="About Us" />
-        </div>
+      <section id="about" className="about-container">
+        <div className="about-content">
+          <div className="about-image">
+            <img src={Logo} alt="About Us" />
+          </div>
 
-        {/* Right: Text Content */}
-        <div className="about-text">
-          <h1 className="about-title">
-            ABOUT US <span className="underline"></span>
-          </h1>
-          <p className="about-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+          <div className="about-text">
+            <h1 className="about-title">
+              ABOUT US <span className="underline"></span>
+            </h1>
+            <p className="about-description">
+              We provide top-notch digital solutions tailored to your needs. 
+              Our team ensures that your business achieves its full potential 
+              through innovative technology.
+            </p>
 
-          <h3 className="about-subtitle">Why Choose Us?</h3>
-          
-          {/* Why Choose Us - Two Column List */}
-          <div className="about-list">
-            <ul>
-              <li>✔ Lorem ipsum dolor</li>
-              <li>✔ Tempor incididunt</li>
-              <li>✔ Lorem ipsum dolor</li>
-              <li>✔ Incididunt ut labore</li>
-            </ul>
-            <ul>
-              <li>✔ Aliquip ex ea commodo</li>
-              <li>✔ Lorem ipsum dolor</li>
-              <li>✔ Exercitation ullamco</li>
-              <li>✔ Lorem ipsum dolor</li>
-            </ul>
+            <h3 className="about-subtitle">Why Choose Us?</h3>
+
+            <div className="about-list">
+              <ul>
+                <li>✔ Reliable & Scalable Solutions</li>
+                <li>✔ Customer-Centric Approach</li>
+                <li>✔ Cutting-edge Technology</li>
+                <li>✔ 24/7 Support</li>
+              </ul>
+              <ul>
+                <li>✔ Competitive Pricing</li>
+                <li>✔ Dedicated Team</li>
+                <li>✔ Proven Track Record</li>
+                <li>✔ Secure & Efficient</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
+      <section id="services" className="services-section">
+        <div className="text-center section-header">
+          <h2 className="section-title">Our Services</h2>
+          <p className="section-subtitle">
+            We provide innovative solutions tailored to your needs.
+          </p>
+        </div>
 
+        <div className="row services-container">
+          {[
+            { title: "Web Development", desc: "Building high-performance websites.", img: Logo },
+            { title: "App Development", desc: "Creating robust mobile applications.", img: Logo },
+            { title: "Digital Marketing", desc: "Enhancing your online presence.", img: Logo },
+            { title: "Cloud Solutions", desc: "Providing scalable cloud-based solutions.", img: Logo },
+            { title: "Cybersecurity", desc: "Ensuring data safety and security.", img: Logo },
+            { title: "24/7 Support", desc: "Always available for your needs.", img: Logo }
+          ].map((service, index) => (
+            <div key={index} className="col-md-4 col-sm-6">
+              <div className="service-card">
+                <img src={service.img} alt={service.title} className="Service-image" />
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section id="team" className="team-section">
+        <h1>Meet the Team</h1>
+        <p>Passionate professionals dedicated to your success.</p>
+        <div className="team-container">
+          {[
+            { name: "John Doe", role: "Director", img: Logo },
+            { name: "Mike Doe", role: "Senior Designer", img: Logo },
+            { name: "Jane Doe", role: "Senior Developer", img: Logo },
+            { name: "Karen Doe", role: "Project Manager", img: Logo }
+          ].map((member, index) => (
+            <div key={index} className="team-member">
+              <img src={member.img} alt={member.name} />
+              <h4>{member.name}</h4>
+              <p>{member.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <div className="contact-container">
+      <div className="contact-form">
+        <h2>GET IN TOUCH</h2>
+        <p>Fill out the form below to send us an email.</p>
+        <form>
+          <div className="input-group">
+            <input type="text" placeholder="Name" required />
+            <input type="email" placeholder="Email" required />
+          </div>
+          <textarea placeholder="Message" required></textarea>
+          <button type="submit">SEND MESSAGE</button>
+        </form>
+      </div>
 
-export default About;
-
-
-    <section id="services" className="services-section">
-  {/* Section Title */}
-  <div className="text-center section-header">
-    <h2 className="section-title">Our Services</h2>
-    <p className="section-subtitle">
-      We provide innovative solutions tailored to your needs.
-    </p>
-  </div>
-
-  {/* Services Row */}
-  <div className="row services-container">
-    <div className="col-md-4 col-sm-6">
-      <div className="service-card">
-        <img src={Logo} alt="Service-image 1" className="Service-image"></img>
-        <h3>Web Development</h3>
-        <p>We build high-performance websites tailored to your needs.</p>
+      <div className="contact-info">
+        <h2>Contact Info</h2>
+        <p><FontAwesomeIcon icon={faMapMarkerAlt} /> <strong> Address:</strong> 4321 California St, San Francisco, CA 12345</p>
+        <p><FontAwesomeIcon icon={faPhone} /> <strong> Phone:</strong> +1 123 456 1234</p>
+        <p><FontAwesomeIcon icon={faEnvelope} /> <strong> Email:</strong> info@company.com</p>
       </div>
     </div>
-    <div className="col-md-4 col-sm-6">
-      <div className="service-card">
-      <img src={Logo} alt="Service-image 1" className="Service-image"></img>
-      <h3>App Development</h3>
-      <p>We build high-performance websites tailored to your needs.</p>
-      </div>
-    </div>
-    <div className="col-md-4 col-sm-6">
-      <div className="service-card">
-      <img src={Logo} alt="Service-image 1" className="Service-image"></img>
-      <h3>Digital Marketing</h3>
-      <p>We build high-performance websites tailored to your needs.</p>
-      </div>
-    </div>
-    <div className="col-md-4 col-sm-6">
-      <div className="service-card">
-      <img src={Logo} alt="Service-image 1" className="Service-image"></img>
-      <h3>Cloud Solutions</h3>
-      <p>We build high-performance websites tailored to your needs.</p>
-      </div>
-    </div>
-    <div className="col-md-4 col-sm-6">
-      <div className="service-card">
-      <img src={Logo} alt="Service-image 1" className="Service-image"></img>
-      <h3>Cybersecurity</h3>
-      <p>We build high-performance websites tailored to your needs.</p>
-      </div>
-    </div>
-    <div className="col-md-4 col-sm-6">
-      <div className="service-card">
-      <img src={Logo} alt="Service-image 1" className="Service-image"></img>
-      <h3>24/7 Support</h3>
-      <p>We build high-performance websites tailored to your needs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-    </div>
+              
+ </div>
   );
 };
-
 export default Landingpage;
